@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hai</title>
+</head>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<body ng-app="app">
+<div  ng-controller="TestCtrl">
+	
+{{text}}
+</div>
+<script type="text/javascript">
+	var test=angular.module('app',[]);
+
+	test.controller('TestCtrl',['$scope',function($scope){
+		$scope.text='Mohith';
+	}]);
+
+</script>
+</body>
+</html>
