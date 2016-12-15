@@ -1,21 +1,85 @@
 <!DOCTYPE html>
 <html>
+<style>
+	input.ng-invalid{
+		background-color: #ff6666; 
+	}
+</style>
 <head>
-	<title>Hai</title>
+	<title>Tetst Application</title>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="Scripts/myApp.js"></script>
+	<script src="Scripts/myCtrl.js"></script>
 </head>
-<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-<body ng-app="app">
-<div  ng-controller="TestCtrl">
-	
-{{text}}
-</div>
-<script type="text/javascript">
-	var test=angular.module('app',[]);
+<body>
+	<!-- <div ng-app="" ng-init="name='mohith'">
+		<p>Name : <input type="text" ng-model="name"></p>
+		<p ng-bind="name"></p>
+		<p>My First expression : {{name}}</p>
+	</div> -->
 
-	test.controller('TestCtrl',['$scope',function($scope){
-		$scope.text='Mohith';
-	}]);
+	<div ng-app="myApp" ng-controller="myCtrl" ng-init="num=[1,2,3,4,5];price=2;cost=5;names">
+		<p>First Name : <input type="text" ng-model="fname"></p>
+		<p>Last Name : <input type="text" ng-model="lname"></p>
+		<p>Full Name : {{fname+" "+ lname}}</p>
+		<p>Cost : <span ng-bind="qty*rt"> </span></p>
+		<p> Array : <span ng-bind="num[2]"></span></p>
+		<p>Cost <input type="number" ng-model="cost"></p>
+		<p>Price <input type="number" ng-model="price"></p>
+		<p>Total : {{price*cost}}</p>
+		<ul>
+			<li ng-repeat="x in num">
+				{{x}}
+			</li>
+		</ul>
 
-</script>
+		<ul>
+			<li ng-repeat="x in names">
+				{{x.name +" "+ x.country}}
+			</li>
+		</ul>
+		<form ng-app="" name="myForm">
+			Email:
+			<input type="email" name="emailTxt" ng-model="eTxt" required>
+			<!-- <span ng-show="myDiv.emailTxt.$error.email">Not a valid e-mail address</span> -->
+			<!-- <h>Status</h> -->
+			{{myDiv.emailTxt.$valid}}
+			{{myDiv.emailTxt.$dirty}}
+			{{myDiv.emailTxt.$touched}}
+		</form>
+		<p>
+			<h1 ng-click="ChangeName()">Name Change</h1>
+		</p>
+	</div> 
+
+	<!-- <form ng-app="" name="myForm">
+		Email:
+		<input type="email" name="emailTxt" ng-model="eTxt">
+		<span ng-show="myForm.emailTxt.$error.email">Not a valid e-mail address</span>
+	</form> -->
+
+	<!-- <div ng-app="myApp" class='my-directive'></div> -->
+	<!-- <div ng-app="myApp">
+		<my-directive></my-directive>
+	</div> -->
+
+	<!-- <div ng-app="" ng-init="person={fname:'Mohith',lname:'Pariyaram'}">
+		<p> Last Name : <span ng-bind="person.lname"></span></p>
+	</div> -->
 </body>
+<!-- <script>
+	var app=angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope){
+		$scope.fname="Mohith";
+		$scope.lname="Pariyaram";
+		$scope.qty=2;
+		$scope.rt=5;
+	});
+
+	app.directive("myDirective",function(){
+		return {
+        template : "Hello Angular"
+    };
+	});
+</script> -->
 </html>
